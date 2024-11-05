@@ -59,3 +59,9 @@ variable "tags" {
   default     = {}
   type        = map(string)
 }
+
+variable "redirect_http_to_https" {
+  description = "A boolean which redirects http to https"
+  default     = false
+  type        = bool
+}

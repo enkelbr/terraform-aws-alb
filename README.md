@@ -85,6 +85,7 @@ No modules.
 | <a name="input_ssl_certificate_enabled"></a> [ssl\_certificate\_enabled](#input\_ssl\_certificate\_enabled) | A boolean which triggers adding or removing the HTTPS listener | `bool` | `false` | no |
 | <a name="input_ssl_policy"></a> [ssl\_policy](#input\_ssl\_policy) | The SSL Policy to use (https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html) | `string` | `"ELBSecurityPolicy-TLS-1-2-2017-01"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to append to this resource | `map(string)` | `{}` | no |
+| <a name="redirect_http_to_https"></a> [redirect_http_to_https](#input\_redirect_http_to_https) | A boolean which redirects http to https | `bool` | `false` | no |
 
 ## Outputs
 

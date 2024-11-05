@@ -71,9 +71,27 @@ resource "aws_lb_listener" "lb_listener_http" {
   port              = "80"
   protocol          = "HTTP"
 
-  default_action {
-    target_group_arn = aws_lb_target_group.lb_tg_http.id
-    type             = "forward"
+  dynamic "default_action" {
+    for_each = var.redirect_http_to_https == false ? [0] : []
+
+    content {
+      target_group_arn = aws_lb_target_group.lb_tg_http.id
+      type             = "forward"
+    }
+  }
+
+  dynamic "default_action" {
+    for_each = var.redirect_http_to_https == true ? [0] : []
+
+    content {
+      type = "redirect"
+
+      redirect {
+        port        = "443"
+        protocol    = "HTTPS"
+        status_code = "HTTP_301"
+      }
+    }
   }
 
   lifecycle {
